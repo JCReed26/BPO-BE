@@ -1,0 +1,29 @@
+version: '3.8'
+services:
+
+# db
+  #db:
+    #image: mysql:latest
+    #restart: always
+    #environment:
+    #  MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
+    #  MYSQL_DATABASE: ${DB_NAME}
+    #ports:
+    #  - "3306:3306" # MYSQL will use port 3306 insider Docker, It is accessible on machine via 8000 
+    #volumes:
+    # - db_data:/var/lib/mysql
+      
+# app:
+
+
+  app:
+    build: .
+    ports:
+      - "5000:5000"
+    #depends_on:
+      #- db
+    env_file:
+      - .env
+
+volumes:
+  db_data:
